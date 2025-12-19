@@ -30,7 +30,7 @@ export default function Hero() {
 
   const handleSendToN8n = async () => {
     setLoading(true)
-  
+
     try {
       await sendTokenToN8n()
       navigate("/match")
@@ -40,7 +40,7 @@ export default function Hero() {
       setLoading(false)
     }
   }
-  
+
 
   return (
     <div>
@@ -51,7 +51,7 @@ export default function Hero() {
       >
 
         {/* HEADER */}
-        {/* {showPopup && (
+        {showPopup && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
             <div className="w-full max-w-md p-6 bg-white rounded-xl">
               <h2 className="mb-4 text-xl font-bold text-center">
@@ -80,28 +80,28 @@ export default function Hero() {
               </div>
             </div>
           </div>
-        )} */}
+        )}
 
 
         {/* HERO CONTENT */}
         <div>
-  <div className="z-10 px-6 pt-12 mx-auto text-center max-w-10xl center md:px-16 md:pt-24">
-    <h1 className="font-serif text-5xl leading-tight text-center md:text-8xl text-dark">
-      Trouvez les bourses <br className="hidden md:block" />
-      adaptées à votre profil.
-    </h1>
+          <div className="z-10 px-6 pt-12 mx-auto text-center max-w-10xl center md:px-16 md:pt-24">
+            <h1 className="font-serif text-5xl leading-tight text-center md:text-8xl text-dark">
+              Trouvez les bourses <br className="hidden md:block" />
+              adaptées à votre profil.
+            </h1>
 
-    <p className="max-w-xl mx-auto my-10 mt-6 text-lg font-semibold text-dark/80">
-      Découvrez les opportunités qui correspondent à votre parcours et à vos besoins.<br />
-      Recevez des recommandations personnalisées.
-    </p>
+            <p className="max-w-xl mx-auto my-10 mt-6 text-lg font-semibold text-dark/80">
+              Découvrez les opportunités qui correspondent à votre parcours et à vos besoins.<br />
+              Recevez des recommandations personnalisées.
+            </p>
 
-    <ScheduleSubmit 
-      text={loading ? "Recherche en cours..." : "Voir mes bourses"} 
-      onClick={handleSendToN8n} 
-    />
-  </div>
-</div>
+            <ScheduleSubmit
+              text={loading ? "Recherche en cours..." : "Voir mes bourses"}
+              onClick={handleSendToN8n}
+            />
+          </div>
+        </div>
 
 
 
