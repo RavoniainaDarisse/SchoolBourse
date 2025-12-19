@@ -3,18 +3,19 @@ import { useState } from "react";
 export default function JourneysExact() {
   const journeys = [
     {
-      text: `Five Pathways has one of the absolute best customer service teams that I have experienced in a very long time. I have experienced a greedy salesman in the past when I didn't have the knowledge to realize it. Five Pathways is very helpful, thorough, honest, and sincerely tries to help potential clients, but not just to make a sale. They have the highest integrity and is sincerely interested in helping the client "see it like it is".`,
+      text: `Vatsy m'a beaucoup aidé à trouver des bourses correspondant parfaitement à mon profil. La plateforme est claire, honnête et vraiment utile pour découvrir toutes les opportunités disponibles.`,
       author: "Diana H."
     },
     {
-      text: `We have been working with Five Pathways for several years now. They are very knowledgeable, patient, and always take the time to explain options in a way that makes sense. We feel confident and supported in our retirement journey.`,
+      text: `J'utilise Vatsy depuis plusieurs mois et l'équipe est très patiente et compétente. Ils expliquent chaque bourse de manière claire et m'ont permis de me sentir confiant dans mes choix.`,
       author: "Judy M."
     },
     {
-      text: `They helped us understand the best financial fit for our situation and walked us through every step. Five Pathways truly cares about the people they serve.`,
+      text: `Grâce à Vatsy, j'ai compris quelles bourses étaient les plus adaptées à ma situation et j'ai été guidé à chaque étape du processus. L'équipe se soucie vraiment de ses utilisateurs.`,
       author: "Robert S."
     }
   ];
+  
 
   const [index, setIndex] = useState(0);
   const prev = () =>

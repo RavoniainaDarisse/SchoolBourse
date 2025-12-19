@@ -84,23 +84,25 @@ export default function Hero() {
 
 
         {/* HERO CONTENT */}
-        <div
-        >
-          <div className="z-10 px-6 pt-12 mx-auto text-center max-w-10xl center md:px-16 md:pt-24">
-            <h1 className="font-serif text-5xl leading-tight text-center md:text-8xl text-dark">
-              A retirement roadmap <br className="hidden md:block" />
-              for everyone.
-            </h1>
+        <div>
+  <div className="z-10 px-6 pt-12 mx-auto text-center max-w-10xl center md:px-16 md:pt-24">
+    <h1 className="font-serif text-5xl leading-tight text-center md:text-8xl text-dark">
+      Trouvez les bourses <br className="hidden md:block" />
+      adaptées à votre profil.
+    </h1>
 
-            <p className="max-w-xl mx-auto my-10 mt-6 text-lg font-semibold text-dark/80">
-              Retirement is a journey.
-              Take it with confidence.
-            </p>
+    <p className="max-w-xl mx-auto my-10 mt-6 text-lg font-semibold text-dark/80">
+      Découvrez les opportunités qui correspondent à votre parcours et à vos besoins.<br />
+      Recevez des recommandations personnalisées.
+    </p>
 
-            <ScheduleSubmit text={loading ? "Envoi..." : "Voir bourse"}
-              onClick={handleSendToN8n} />
-          </div>
-        </div>
+    <ScheduleSubmit 
+      text={loading ? "Recherche en cours..." : "Voir mes bourses"} 
+      onClick={handleSendToN8n} 
+    />
+  </div>
+</div>
+
 
 
 
