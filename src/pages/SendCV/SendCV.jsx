@@ -99,18 +99,27 @@ export default function SendCV() {
   }
 
   return (
-    <div className="min-h-screen w-full ">
+    <div className="w-full min-h-screen ">
       <Navbar />
+
+      {uploading && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+        <div className="flex flex-col items-center gap-4 p-8 shadow-lg bg-white/20 rounded-xl">
+          <div className="w-12 h-12 border-4 rounded-full border-t-black border-r-transparent animate-spin" />
+          <p className="text-lg font-medium text-black">Envoi du CV...</p>
+        </div>
+      </div>
+    )}
 
       <div className="px-6 py-12">
         <div className="max-w-5xl mx-auto space-y-14">
 
           {/* HERO */}
           <section className="space-y-4">
-            <h1 className="text-4xl font-serif font-bold">
+            <h1 className="font-serif text-4xl font-bold">
               Dépôt de CV – Candidature professionnelle
             </h1>
-            <p className="text-gray-600 text-lg max-w-3xl">
+            <p className="max-w-3xl text-lg text-gray-600">
               Déposez votre curriculum vitae de manière sécurisée.
               Les documents sont SchoolBoursement enregistrés et traités
               par notre système de recrutement.
@@ -118,7 +127,7 @@ export default function SendCV() {
           </section>
 
           {/* INFOS */}
-          <section className="grid md:grid-cols-3 gap-6">
+          <section className="grid gap-6 md:grid-cols-3">
             <div className="flex gap-4">
               <Info />
               <div>
@@ -163,9 +172,9 @@ export default function SendCV() {
               }`}
             >
               {!file ? (
-                <div className="text-center space-y-3">
+                <div className="space-y-3 text-center">
                   <Upload className="mx-auto h-14 w-14" />
-                  <p className="font-medium text-lg">
+                  <p className="text-lg font-medium">
                     Glissez-déposez votre CV ici
                   </p>
                   <p className="text-sm text-gray-500">
@@ -181,7 +190,7 @@ export default function SendCV() {
                   />
                 </div>
               ) : (
-                <div className="flex justify-between items-center">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <FileText />
                     <div>
@@ -225,23 +234,23 @@ export default function SendCV() {
           </section>
 
           {/* PROCESS */}
-          <section className="grid md:grid-cols-3 gap-8">
+          <section className="grid gap-8 md:grid-cols-3">
             <div>
-              <h4 className="font-semibold mb-2">1. Dépôt</h4>
+              <h4 className="mb-2 font-semibold">1. Dépôt</h4>
               <p className="text-sm text-gray-500">
                 Téléversez votre CV.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-2">2. Traitement</h4>
+              <h4 className="mb-2 font-semibold">2. Traitement</h4>
               <p className="text-sm text-gray-500">
                 Le document est stocké SchoolBoursement.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-2">3. Étude</h4>
+              <h4 className="mb-2 font-semibold">3. Étude</h4>
               <p className="text-sm text-gray-500">
                 Votre candidature est analysée.
               </p>

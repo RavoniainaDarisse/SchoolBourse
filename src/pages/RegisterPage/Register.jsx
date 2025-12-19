@@ -47,7 +47,17 @@ const Register = () => {
   
 
   return (
-    <div className="min-h-screen px-[10%] text-black flex">
+    <div className="min-h-screen px-[10%] text-black flex md:flex-row flex-col md:my-0 my-5">
+
+{loading && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+        <div className="flex flex-col items-center gap-4 p-8 shadow-lg bg-white/20 rounded-xl">
+          <div className="w-12 h-12 border-4 rounded-full border-t-black border-r-transparent animate-spin" />
+          <p className="text-lg font-medium text-black">Chargement...</p>
+        </div>
+      </div>
+    )}
+
 
       {/* SECTION GAUCHE (inchangée) */}
       <div className="flex-1 flex flex-col mt-[10%] px-10">
@@ -90,8 +100,8 @@ const Register = () => {
           <form onSubmit={handleSubmit} className="space-y-10">
 
             {/* NOM / PRENOM */}
-            <div className="flex gap-4">
-              <div className="w-1/2">
+            <div className="flex flex-col gap-4 md:flex-row">
+              <div className="md:w-1/2">
                 <label className="block mb-3 text-sm">
                   Nom <span className="text-gray-500">(required)</span>
                 </label>
@@ -105,7 +115,7 @@ const Register = () => {
                 />
               </div>
 
-              <div className="w-1/2">
+              <div className="md:w-1/2">
                 <label className="block mb-3 text-sm">
                   Prénom <span className="text-gray-500">(required)</span>
                 </label>

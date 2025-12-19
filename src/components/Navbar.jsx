@@ -79,7 +79,7 @@ function Navbar() {
           </Link>
 
           {isAuthenticated ? (
-            <ScheduleButton
+            <ScheduleSubmit
               text="Se déconnecter"
               onClick={handleLogout}
               full

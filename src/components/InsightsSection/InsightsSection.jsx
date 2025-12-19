@@ -100,7 +100,7 @@ export default function InsightsSection() {
               {/* Card 2 */}
               <div className="overflow-hidden border rounded-xl">
                 <img
-                  src="/images/insight-2.jpg"
+                  src="/img/Foot3.png"
                   alt="Retirement expenses"
                   className="object-cover w-full h-40"
                 />

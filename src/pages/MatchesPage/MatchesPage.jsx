@@ -16,6 +16,7 @@ import { Progress } from "@/components/ui/progress"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
 import { getDataFromN8n } from "@/services/profile.service"
+import Navbar from "@/components/Navbar"
 
 const mockScholarships = [
   {
@@ -71,27 +72,7 @@ export default function MatchesPage() {
     <div className="min-h-screen font-serif bg-[#fffaf5]">
 
       {/* HEADER */}
-      <header className="sticky top-0 z-50 border-b bg-[#fffaf5] backdrop-blur">
-        <div className="container flex items-center justify-between px-4 py-4 mx-auto">
-
-          <a href="/" className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl to-chart-1">
-              <Shield className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold">Bourse-Guard</h1>
-              <p className="text-xs text-muted-foreground">Mes matches</p>
-            </div>
-          </a>
-
-          <Button variant="outline" className="bg-[#fffaf5]" size="sm" asChild>
-            <a href="/">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Retour
-            </a>
-          </Button>
-        </div>
-      </header>
+      <Navbar/>
 
       {/* CONTENT */}
       <main className="container px-4 py-12 mx-auto">

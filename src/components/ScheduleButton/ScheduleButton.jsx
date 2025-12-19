@@ -25,7 +25,7 @@ export default function ScheduleButton({
           flex items-center gap-3
           bg-[#6ED3C2]
           text-black
-          text-2xl
+          text-1xl
           font-medium
           px-7 py-3
           rounded-full

@@ -58,7 +58,15 @@ const Login = () => {
   // };
 
   return (
-    <div className="min-h-screen px-[10%]  flex">
+    <div className="min-h-screen px-[10%]  flex md:flex-row flex-col md:my-0 my-5">
+      {loading && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+        <div className="flex flex-col items-center gap-4 p-8 shadow-lg bg-white/20 rounded-xl">
+          <div className="w-12 h-12 border-4 rounded-full border-t-black border-r-transparent animate-spin" />
+          <p className="text-lg font-medium text-black">Chargement...</p>
+        </div>
+      </div>
+    )}
       {/* Section gauche - RESTE FIXE   bg-[#252525]*/}
       <div className="flex-1 flex flex-col  mt-[10%] px-10 text-black">
         <div className="max-w-md">

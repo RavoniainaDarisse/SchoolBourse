@@ -6,9 +6,9 @@ import RegisterPage from './pages/RegisterPage/RegisterPage'
 import MatchesPage from './pages/MatchesPage/MatchesPage'
 import VerifyPage from './pages/VerifyPage/VerifyPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
-import PrivateRoute from './PrivateRoute'
 import SendCV from './pages/SendCV/SendCV'
-
+import PrivateRoute from './PrivateRoute'
+import NotFoundPage from './components/NotFoundPage/NotFoundPage'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/SendCV" element={<SendCV />} />
+        {/* <Route path="/sendcv" element={<SendCV />} /> */}
 
         {/* Routes protégées */}
         <Route
@@ -25,6 +25,14 @@ function App() {
           element={
             <PrivateRoute>
               <MatchesPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/sendcv"
+          element={
+            <PrivateRoute>
+              <SendCV />
             </PrivateRoute>
           }
         />
@@ -44,6 +52,9 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        {/* Route 404 pour toutes les URLs non définies */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </main>
   )

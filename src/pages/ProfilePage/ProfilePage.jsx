@@ -115,7 +115,15 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-[#fffaf5]">
-
+{isSubmitting && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+        <div className="flex flex-col items-center gap-4 p-8 shadow-lg bg-white/20 rounded-xl">
+          {/* Spinner animé */}
+          <div className="w-12 h-12 border-4 rounded-full border-t-black border-r-transparent animate-spin" />
+          <p className="text-lg font-medium text-black">Enregistrement...</p>
+        </div>
+      </div>
+    )}
       {/* DIALOG */}
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent className="max-w-md">

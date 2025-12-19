@@ -1,12 +1,12 @@
 export default function DirectionsSection() {
     return (
-      <section className="bg-[#FBF6EE] py-24">
+      <section className="md:bg-[#FBF6EE] py-24">
   
         {/* PRESS LOGOS */}
        
   
         {/* MAIN CARD */}
-        <div className="max-w-[80%] mx-auto border border-black rounded-xl bg-[#fffaf5] px-20 py-32">
+        <div className="md:max-w-[80%] mx-auto border border-black rounded-xl bg-[#fffaf5] md:px-20 px-10 py-32">
   
           {/* ICON */}
           <div className="flex justify-center mb-8">
