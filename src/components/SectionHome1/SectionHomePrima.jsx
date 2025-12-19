@@ -10,7 +10,7 @@ export default function SectionHomePrima() {
   
             {/* Image */}
             <img
-              src="/images/balloon.png"
+              src="/img/SectionHome1.png"
               alt="Hot air balloon"
               className="max-w-sm mx-auto md:mx-0"
             />

@@ -29,7 +29,7 @@ export default function ServicesSection() {
             {/* Block 1 */}
             <div className="grid items-center grid-cols-1 gap-16 md:grid-cols-2">
               <img
-                src="/images/mountain.png"
+                src="/img/Thirdsection1.png"
                 alt="Retirement planning"
                 className="w-full"
               />
@@ -76,7 +76,7 @@ export default function ServicesSection() {
               </div>
   
               <img
-                src="/images/desert.png"
+                src="/img/Thirdsection2.png"
                 alt="Tax planning"
                 className="w-full"
               />

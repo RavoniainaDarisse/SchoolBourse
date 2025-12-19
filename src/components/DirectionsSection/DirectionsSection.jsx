@@ -47,15 +47,10 @@ export default function DirectionsSection() {
             <div className="relative overflow-hidden border border-black rounded-lg">
               <video
                 className="object-cover w-full h-full"
-                poster="/video-poster.jpg"
+                poster="/img/Firstsection1.png"
               />
   
-              {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex items-center justify-center text-xl text-white rounded-full w-14 h-14 bg-black/70">
-                  ▶
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>

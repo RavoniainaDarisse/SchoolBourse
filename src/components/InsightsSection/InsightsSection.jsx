@@ -52,7 +52,7 @@ export default function InsightsSection() {
             <div className="lg:col-span-2">
               <div className="overflow-hidden border rounded-xl">
                 <img
-                  src="/images/insight-main.jpg"
+                  src="/img/Foot1.png"
                   alt="Main insight"
                   className="w-full h-[360px] object-cover"
                 />
@@ -78,7 +78,7 @@ export default function InsightsSection() {
               {/* Card 1 */}
               <div className="overflow-hidden border rounded-xl">
                 <img
-                  src="/images/insight-1.jpg"
+                  src="/img/Foot3.png"
                   alt="Estate scam"
                   className="object-cover w-full h-40"
                 />
