@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ScheduleButton from '../ScheduleButton/ScheduleButton'
 
 const NotFoundPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-center">
-      <h1 className="mb-4 text-6xl font-bold">404</h1>
-      <p className="mb-6 text-xl">Page non trouvée</p>
-      <Link to="/" className="px-6 py-3 bg-[#6ED3C2] text-black rounded-full font-medium">
-        Retour à l'accueil
-      </Link>
+      <h1 className="mb-4 font-bold text-[150px]">404</h1>
+      <p className="mb-6 text-xl text-center">Page non trouvée</p>
+
+      <ScheduleButton text="Retour à l'accueil" to='/'/>
     </div>
   )
 }
