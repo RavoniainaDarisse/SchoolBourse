@@ -111,19 +111,20 @@ export default function Hero() {
 
       <div className="my-10 text-center">
         <p className="mb-6 font-serif text-2xl italic">
-          People are talking
+          Partenaire
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-10 text-2xl opacity-80">
-          <span>yahoo! finance</span>
-          <span>Nasdaq</span>
-          <span>Aol.</span>
-          <span>GO Banking Rates</span>
-          <span>NewsBreak</span>
-          <span>msn</span>
-          <span>AARP</span>
-          <span>CBS</span>
-        </div>
+        <div className="flex flex-wrap items-center justify-center gap-10 text-xl font-medium opacity-80">
+  <span>Education Africa Network</span>
+  <span>Global Academic Review</span>
+  <span>International Student Journal</span>
+  <span>Higher Education Today</span>
+  <span>Scholarship Watch</span>
+  <span>Campus News</span>
+  <span>EdTech Insights</span>
+  <span>Global Learning Media</span>
+</div>
+
       </div>
 
     </div>

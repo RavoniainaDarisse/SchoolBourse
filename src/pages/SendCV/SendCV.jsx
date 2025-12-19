@@ -50,38 +50,32 @@ export default function SendCV() {
 
   const handleSend = async () => {
     if (!file || uploading) return
-  
+
     setUploading(true)
     setStatus("idle")
-  
+
     try {
+      const token = localStorage.getItem("token")
+      if (!token) throw new Error("Utilisateur non authentifié")
+      const cleanToken = token.startsWith("=") ? token.substring(1) : token
+
       const formData = new FormData()
       formData.append("file", file)
-  
+      formData.append("token", cleanToken) // <-- envoie le token avec le PDF
+
       const response = await fetch(
-        "https://iandrianinameeting.app.n8n.cloud/webhook-test/cv",
+        "https://iandrianinameeting.app.n8n.cloud/webhook/cv",
         {
           method: "POST",
           body: formData,
         }
       )
-  
-      console.log("Status:", response.status)
-  
-      // ❌ serveur a répondu mais erreur HTTP
-      if (!response.ok) {
-        throw new Error(`HTTP Error ${response.status}`)
-      }
-  
-      // ✅ SUCCESS
+
+      if (!response.ok) throw new Error(`HTTP Error ${response.status}`)
+
       setStatus("success")
       setFile(null)
-  
-      // 🔐 SAFE reset input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = ""
-      }
-  
+      // if (fileInputRef.current) fileInputRef.current.value = ""
     } catch (error) {
       console.error("Erreur upload CV :", error)
       setStatus("error")
@@ -89,8 +83,6 @@ export default function SendCV() {
       setUploading(false)
     }
   }
-  
-  
 
   const formatFileSize = (bytes) => {
     const sizes = ["Bytes", "KB", "MB"]
@@ -99,7 +91,7 @@ export default function SendCV() {
   }
 
   return (
-    <div className="w-full min-h-screen ">
+    <div className="w-full min-h-screen">
       <Navbar />
 
       {uploading && (
@@ -120,7 +112,7 @@ export default function SendCV() {
               Dépôt de CV – Candidature à une bourse
             </h1>
             <p className="max-w-3xl text-lg text-gray-600">
-              Déposez votre curriculum vitae afin que votre candidature soit analysée pour l’octroi d’une bourse. 
+              Déposez votre CV pour que votre candidature soit analysée pour l’octroi d’une bourse. 
               Votre dossier sera traité de manière sécurisée et confidentielle.
             </p>
           </section>
@@ -131,29 +123,21 @@ export default function SendCV() {
               <Info />
               <div>
                 <h3 className="font-semibold">Format accepté</h3>
-                <p className="text-sm text-gray-500">
-                  Uniquement fichier PDF.
-                </p>
+                <p className="text-sm text-gray-500">Uniquement PDF.</p>
               </div>
             </div>
-
             <div className="flex gap-4">
               <FileText />
               <div>
                 <h3 className="font-semibold">Taille maximale</h3>
-                <p className="text-sm text-gray-500">
-                  5 MB maximum.
-                </p>
+                <p className="text-sm text-gray-500">5 MB maximum.</p>
               </div>
             </div>
-
             <div className="flex gap-4">
               <ShieldCheck />
               <div>
                 <h3 className="font-semibold">Sécurité</h3>
-                <p className="text-sm text-gray-500">
-                  Vos données sont protégées et confidentielles.
-                </p>
+                <p className="text-sm text-gray-500">Vos données sont protégées et confidentielles.</p>
               </div>
             </div>
           </section>
@@ -165,21 +149,14 @@ export default function SendCV() {
               onDrop={handleDrop}
               onDragOver={(e) => e.preventDefault()}
               className={`border-2 border-dashed rounded-xl p-12 cursor-pointer transition ${
-                file
-                  ? "border-blue-500 bg-blue-50"
-                  : "border-gray-300 hover:border-blue-400"
+                file ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:border-blue-400"
               }`}
             >
               {!file ? (
                 <div className="space-y-3 text-center">
                   <Upload className="mx-auto h-14 w-14" />
-                  <p className="text-lg font-medium">
-                    Glissez-déposez votre CV pour la bourse ici
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    ou cliquez pour sélectionner un fichier
-                  </p>
-
+                  <p className="text-lg font-medium">Glissez-déposez votre CV ici</p>
+                  <p className="text-sm text-gray-500">ou cliquez pour sélectionner un fichier</p>
                   <input
                     ref={fileInputRef}
                     type="file"
@@ -194,19 +171,10 @@ export default function SendCV() {
                     <FileText />
                     <div>
                       <p className="font-medium">{file.name}</p>
-                      <p className="text-sm text-gray-500">
-                        {formatFileSize(file.size)}
-                      </p>
+                      <p className="text-sm text-gray-500">{formatFileSize(file.size)}</p>
                     </div>
                   </div>
-
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setFile(null)
-                    }}
-                    className="text-red-500 hover:text-red-600"
-                  >
+                  <button onClick={(e) => { e.stopPropagation(); setFile(null) }} className="text-red-500 hover:text-red-600">
                     <X />
                   </button>
                 </div>
@@ -215,62 +183,27 @@ export default function SendCV() {
 
             {/* STATUS */}
             {status !== "idle" && (
-              <div
-                className={`mt-6 flex items-center gap-3 rounded-lg px-4 py-3 ${
-                  status === "success"
-                    ? "bg-[#6ED3C2] text-dark"
-                    : "bg-red-50 text-red-600"
-                }`}
-              >
+              <div className={`mt-6 flex items-center gap-3 rounded-lg px-4 py-3 ${
+                status === "success" ? "bg-[#6ED3C2] text-dark" : "bg-red-50 text-red-600"
+              }`}>
                 {status === "success" ? <CheckCircle2 /> : <AlertCircle />}
                 <span>
                   {status === "success"
-                    ? "Votre CV a été envoyé avec succès pour analyse."
+                    ? "Votre CV a été envoyé avec succès."
                     : "Erreur lors de l’envoi du CV."}
                 </span>
               </div>
             )}
           </section>
 
-          {/* PROCESS */}
-          <section className="grid gap-8 md:grid-cols-3">
-            <div>
-              <h4 className="mb-2 font-semibold">1. Dépôt</h4>
-              <p className="text-sm text-gray-500">
-                Téléversez votre CV pour la bourse.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="mb-2 font-semibold">2. Analyse</h4>
-              <p className="text-sm text-gray-500">
-                Votre dossier sera examiné attentivement.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="mb-2 font-semibold">3. Recommandation</h4>
-              <p className="text-sm text-gray-500">
-                Une recommandation sera émise selon l’analyse de votre CV.
-              </p>
-            </div>
-          </section>
-
           {/* ACTION */}
           <button
             onClick={handleSend}
             disabled={!file || uploading}
-            className={`w-full px-7 py-4 border-2 border-black font-serif rounded-xl text-lg
-              flex justify-center items-center gap-3
-              ${uploading ? "bg-gray-300" : "bg-[#6ED3C2] hover:bg-[#5bc5b4]"}
-            `}
+            className={`w-full px-7 py-4 border-2 border-black font-serif rounded-xl text-lg flex justify-center items-center gap-3
+              ${uploading ? "bg-gray-300" : "bg-[#6ED3C2] hover:bg-[#5bc5b4]"}`}
           >
-            {uploading ? "Envoi en cours..." : (
-              <>
-                <Send />
-                Soumettre mon CV pour la bourse
-              </>
-            )}
+            {uploading ? "Envoi en cours..." : (<><Send /> Soumettre mon CV pour la bourse</>)}
           </button>
         </div>
       </div>

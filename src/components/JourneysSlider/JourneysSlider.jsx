@@ -31,7 +31,7 @@ export default function JourneysExact() {
 
       {/* TITLE */}
       <p className="mb-24 font-serif text-2xl italic text-center">
-        Journeys from the Past
+        Avis des utilisateurs
       </p>
 
       {/* SLIDER ROW */}
@@ -100,7 +100,7 @@ export default function JourneysExact() {
         <button className="relative">
           <span className="absolute inset-0 bg-black rounded-full translate-x-[3px] translate-y-[3px]" />
           <span className="relative px-7 py-3 text-2xl bg-[#6ED3C2] border-2 border-black rounded-full font-serif flex gap-3 items-center">
-            More journeys →
+            Voir Plus →
           </span>
         </button>
       </div>

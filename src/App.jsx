@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/sendcv" element={<SendCV />} />
+        {/* <Route path="/sendcv" element={<SendCV />} /> */}
 
         {/* Routes protégées */}
         <Route
@@ -28,14 +28,14 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* <Route
+        <Route
           path="/sendcv"
           element={
             <PrivateRoute>
               <SendCV />
             </PrivateRoute>
           }
-        /> */}
+        />
         <Route
           path="/verify"
           element={

@@ -42,23 +42,21 @@ export default function SectionHomePrima() {
   <section className="py-16 text-center">
     <p className="mb-8 text-2xl italic">Propulsé par</p>
 
-    <div className="flex flex-wrap items-center justify-center gap-10 opacity-80">
-      {[
-        "logo1",
-        "logo2",
-        "logo3",
-        "logo4",
-        "logo5",
-        "logo6",
-      ].map((logo, index) => (
-        <img
-          key={index}
-          src={`/images/${logo}.svg`}
-          alt={logo}
-          className="object-contain h-6"
-        />
-      ))}
-    </div>
+    <div className="flex flex-wrap items-center justify-center gap-10 text-sm font-semibold tracking-wide text-gray-700 opacity-80">
+  {[
+    "Institut Français de Madagascar",
+    "Université d’Antananarivo",
+    "African Education Network",
+    "Global Scholarship Alliance",
+    "Digital Skills Africa",
+    "International Student Support Program",
+  ].map((partner, index) => (
+    <span key={index} className="uppercase">
+      {partner}
+    </span>
+  ))}
+</div>
+
   </section>
 
   {/* SERVICES / PRODUITS */}

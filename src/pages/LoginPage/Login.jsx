@@ -40,7 +40,7 @@ const Login = () => {
       console.log('Login success:', data)
       console.log('Token:', localStorage.getItem('token'))
   
-      navigate('/match')
+      navigate('/sendCV')
     } catch (err) {
       console.error(err.response?.data || err.message)
       setError('Email ou mot de passe incorrect')
