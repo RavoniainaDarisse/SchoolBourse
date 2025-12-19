@@ -5,12 +5,21 @@ export const login = async (email, password) => {
     email,
     password,
   })
+
   const token = response.data.token
-  localStorage.setItem('token', token)
+
+  if (token) {
+    localStorage.setItem('token', token)
+  }
+
   return response.data
 }
 
-export const register = async ({ nom, prenom, email, password }) => {
-  const response = await api.post('/register', { nom, prenom, email, password })
+export const register = async ({ email, password, username }) => {
+  const response = await api.post('/signup', {
+    email,
+    password,
+    username,
+  })
   return response.data
 }

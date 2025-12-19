@@ -23,7 +23,7 @@ export default function SectionHomePrima() {
                 retirement planning.
               </h1>
   
-              <p className="max-w-md my-10 text-2xl text-gray-700">
+              <p className="max-w-md my-10 text-gray-700 md:text-2xl">
                 We’ll work with you to create a personalized strategy that
                 incorporates all of the paths of retirement planning by focusing
                 on what is most important to you.
@@ -74,11 +74,11 @@ export default function SectionHomePrima() {
   
             {/* Left text */}
             <div className="md:col-span-1">
-              <h2 className="mb-6 font-serif text-6xl leading-tight">
+              <h2 className="mb-6 font-serif text-4xl leading-tight md:text-6xl">
                 It’s ok to stop and  ask for directions.
               </h2>
   
-              <p className="text-2xl leading-relaxed text-gray-700">
+              <p className="leading-relaxed text-gray-700 md:text-2xl">
                 Don’t confuse a portfolio with an actual plan. A few vague
                 directions from an advisor just won’t cut it. What you need is
                 a true financial guide—someone who’s traveled this road many
@@ -95,7 +95,7 @@ export default function SectionHomePrima() {
                 <h3 className="mb-3 font-serif text-3xl">
                   Income Planning
                 </h3>
-                <p className="mt-20 mb-10 text-2xl leading-relaxed text-gray-600">
+                <p className="mt-20 mb-10 leading-relaxed text-gray-600 md:text-2xl">
                   Income planning looks different for everyone. Potentially
                   consisting of investments, Social Security, pensions, and
                   annuities.
@@ -108,7 +108,7 @@ export default function SectionHomePrima() {
                 <h3 className="mb-3 font-serif text-3xl">
                   Legacy Planning
                 </h3>
-                <p className="mt-20 mb-10 text-2xl leading-relaxed text-gray-600">
+                <p className="mt-20 mb-10 leading-relaxed text-gray-600 md:text-2xl">
                   Leaving a legacy means a lot of different things. Whether
                   you’re someone who wants to leave a financial legacy or
                   something more.
@@ -120,7 +120,7 @@ export default function SectionHomePrima() {
                 <h3 className="mb-3 font-serif text-3xl">
                   Legacy Planning
                 </h3>
-                <p className="mt-20 mb-10 text-2xl leading-relaxed text-gray-600">
+                <p className="mt-20 mb-10 leading-relaxed text-gray-600 md:text-2xl">
                   Leaving a legacy means a lot of different things. Whether
                   you’re someone who wants to leave a financial legacy or
                   something more.
@@ -129,10 +129,10 @@ export default function SectionHomePrima() {
 
               <div className="p-6 bg-[#fffaf5] shadow-sm rounded-2xl">
                 <div className="mb-4 text-3xl">☂️</div>
-                <h3 className="mb-3 font-serif text-lg">
+                <h3 className="mb-3 font-serif text-3xl">
                   Legacy Planning
                 </h3>
-                <p className="mt-20 mb-10 text-2xl leading-relaxed text-gray-600">
+                <p className="mt-20 mb-10 leading-relaxed text-gray-600 md:text-2xl">
                   Leaving a legacy means a lot of different things. Whether
                   you’re someone who wants to leave a financial legacy or
                   something more.

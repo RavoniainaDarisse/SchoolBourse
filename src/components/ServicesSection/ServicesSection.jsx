@@ -11,12 +11,12 @@ export default function ServicesSection() {
               Our Services
             </p>
   
-            <h2 className="mb-6 font-serif leading-tight text-8xl md:text-7xl">
+            <h2 className="mb-6 font-serif text-4xl leading-tight md:text-7xl">
               Five Pathways is here to simplify
               your retirement planning.
             </h2>
   
-            <p className="mt-10 text-2xl text-gray-700 leading -relaxed">
+            <p className="mt-10 text-gray-700 md:text-2xl leading -relaxed">
               We’ll work with you to create a personalized strategy that incorporates
               all of the paths of retirement planning: Income, Taxes, Investments,
               healthcare and <span className="underline">Estate Planning</span>.

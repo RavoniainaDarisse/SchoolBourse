@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
+import { getDataFromN8n } from "@/services/profile.service"
 
 const mockScholarships = [
   {
@@ -52,6 +54,19 @@ const mockScholarships = [
 ]
 
 export default function MatchesPage() {
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getDataFromN8n();
+        console.log("Données N8N :", data); // <-- console.log ici
+      } catch (error) {
+        console.error("Erreur récupération N8N :", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="min-h-screen font-serif bg-[#fffaf5]">
 
@@ -93,7 +108,7 @@ export default function MatchesPage() {
               <span className="font-medium">Bourses correspondantes</span>
             </div>
 
-            <h2 className="mb-3 text-3xl font-bold font-serif md:text-4xl">
+            <h2 className="mb-3 font-serif text-3xl font-bold md:text-4xl">
               Tes meilleures opportunités
             </h2>
 
@@ -116,7 +131,7 @@ export default function MatchesPage() {
                   {/* TOP */}
                   <div className="flex flex-col gap-4 mb-6 md:flex-row md:items-start md:justify-between">
                     <div className="flex-1">
-                      <h3 className="mb-2 text-xl font-bold font-serif">{s.name}</h3>
+                      <h3 className="mb-2 font-serif text-xl font-bold">{s.name}</h3>
                       <p className="text-sm text-muted-foreground">
                         {s.description}
                       </p>

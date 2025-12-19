@@ -25,19 +25,26 @@ const Register = () => {
     e.preventDefault()
     setError(null)
     setLoading(true)
-
+  
     try {
-      const data = await register(formData)
+      const payload = {
+        email: formData.email,
+        password: formData.password,
+        username: `${formData.prenom} ${formData.nom}`, // 👈 IMPORTANT
+      }
+  
+      const data = await register(payload)
       console.log('Register success:', data)
-      // Après inscription, redirige vers login
+  
       navigate('/login')
     } catch (err) {
       console.error(err)
-      setError('Une erreur est survenue lors de l’inscription')
+      setError("Une erreur est survenue lors de l’inscription")
     } finally {
       setLoading(false)
     }
   }
+  
 
   return (
     <div className="min-h-screen px-[10%] text-black flex">

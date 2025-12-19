@@ -12,7 +12,7 @@ export default function DirectionsSection() {
           <div className="flex justify-center mb-8">
             <span className="text-4xl"></span>
 
-            <h2 className="mx-auto mb-6 font-serif leading-tight text-center text-7xl">
+            <h2 className="mx-auto mb-6 font-serif text-4xl leading-tight text-center md:text-7xl">
                 Get directions on<br />
                 the road to retirement
               </h2>
@@ -24,7 +24,7 @@ export default function DirectionsSection() {
             {/* LEFT TEXT */}
             <div>
   
-              <p className="font-serif font- text-2xl leading-[26px] text-justify">
+              <p className="font-serif font- md:text-2xl leading-[26px] text-justify">
                 Your journey through retirement is unique. Each part of your
                 financial life is just one of many pathways on your personal
                 retirement roadmap. But that roadmap can get a little complicated.

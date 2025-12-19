@@ -1,11 +1,10 @@
 import axios from 'axios'
 
-const apiurl = import.meta.env.VITE_API_URL;
 const api = axios.create({
-  baseURL: apiurl,
+  baseURL: 'https://iandrianinameeting.app.n8n.cloud/webhook',
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 })
 
 export default api

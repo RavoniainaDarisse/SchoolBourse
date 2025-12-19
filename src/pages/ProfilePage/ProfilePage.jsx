@@ -27,6 +27,23 @@ import { Link, useNavigate } from "react-router-dom"
 import { saveProfile } from "@/services/profile.service"
 import Navbar from "@/components/Navbar"
 
+const normalizeEmptyFields = (data) => {
+  const normalized = {}
+
+  Object.keys(data).forEach((key) => {
+    const value = data[key]
+
+    if (value === "" || value === undefined) {
+      normalized[key] = null
+    } else {
+      normalized[key] = value
+    }
+  })
+
+  return normalized
+}
+
+
 export default function ProfilePage() {
   const { toast } = useToast()
   const navigate = useNavigate()
@@ -57,37 +74,44 @@ export default function ProfilePage() {
     engagement_associatif: "",
   })
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-
+  
     try {
+      const cleanedData = normalizeEmptyFields(formData)
+  
       await saveProfile({
-        ...formData,
-        autres_langues: autresLangues,
-        recompenses_distinctions: recompenses,
+        ...cleanedData,
+        autres_langues: autresLangues.length ? autresLangues : null,
+        recompenses_distinctions: recompenses.length ? recompenses : null,
       })
-
+  
       setSaveStatus("success")
       setOpenDialog(true)
-
+  
       toast({
         title: "Profil enregistré",
         description: "Ton profil a été sauvegardé avec succès",
       })
     } catch (error) {
+      console.error(error.response?.data || error.message)
       setSaveStatus("error")
       setOpenDialog(true)
-
+  
       toast({
         title: "Erreur",
         description: "Impossible d'enregistrer le profil",
         variant: "destructive",
+     _toggle: true,
       })
     } finally {
       setIsSubmitting(false)
     }
   }
+  
 
   return (
     <div className="min-h-screen bg-[#fffaf5]">
@@ -119,7 +143,7 @@ export default function ProfilePage() {
       </Dialog>
 
       {/* HEADER */}
-      <Navbar/>
+      <Navbar />
 
       {/* CONTENT */}
       <main className="w-full px-6 py-10">
@@ -132,12 +156,12 @@ export default function ProfilePage() {
 
           {/* SECTION 1 */}
           <section>
-            <h2 className="mb-6 text-2xl font-bold flex items-center gap-2">
+            <h2 className="flex items-center gap-2 mb-6 text-2xl font-bold">
               <User className="w-5 h-5 text-primary" />
               Informations personnelles
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 xl:grid-cols-4">
               <Field label="Téléphone">
                 <Input
                   value={formData.telephone}
@@ -158,10 +182,11 @@ export default function ProfilePage() {
                     <SelectValue placeholder="Sélectionner" />
                   </SelectTrigger>
                   <SelectContent className="bg-[#fffaf5]">
-                    <SelectItem value="M">Masculin</SelectItem>
-                    <SelectItem value="F">Féminin</SelectItem>
+                    <SelectItem value="Homme">Homme</SelectItem>
+                    <SelectItem value="Femme">Femme</SelectItem>
                   </SelectContent>
                 </Select>
+
               </Field>
 
               <Field label="Nationalité">
@@ -206,7 +231,7 @@ export default function ProfilePage() {
               Parcours académique
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 xl:grid-cols-4">
               <Field label="Parcours académique">
                 <Input
                   value={formData.parcours_academique}
@@ -292,7 +317,7 @@ export default function ProfilePage() {
           </section>
 
           {/* SECTION 3 */}
-          <section className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          <section className="grid grid-cols-1 gap-8 xl:grid-cols-3">
             <TextareaBlock
               label="Expériences académiques"
               value={formData.experiences_academiques}

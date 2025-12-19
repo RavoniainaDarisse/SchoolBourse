@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import ScheduleButton from './ScheduleButton/ScheduleButton'
+import { Menu, X } from 'lucide-react'
+import ScheduleSubmit from './ScheduleButton/ScheduleSubmit'
 
 function Navbar() {
   const navigate = useNavigate()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [open, setOpen] = useState(false)
 
   // Vérifie si un token existe
   useEffect(() => {
@@ -16,41 +19,81 @@ function Navbar() {
     localStorage.removeItem('token')
     setIsAuthenticated(false)
     navigate('/')
+    setOpen(false)
   }
 
   return (
-    <header className="flex items-center justify-between px-2 border-b md:px-16">
-      {/* Logo */}
-      <Link to="/">
-      <div className="flex items-center gap-2 font-sans text-sm font-semibold">
-        <span className="font-bold text-[50px]">FP</span>
-        <span className="tracking-wide text-[15px]">FIVE PATHWAYS FINANCIAL</span>
+    <header className="border-b">
+      <div className="flex items-center justify-between px-4 md:px-16">
+
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <span className="font-bold text-[40px] md:text-[50px]">V</span>
+          <span className="text-sm tracking -wide md:text-[15px]">
+            Vatsy
+          </span>
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="items-center hidden gap-8 md:flex">
+          <Link to="/profileAdd" className="text-lg hover:underline">
+            Remplir Profil
+          </Link>
+          <Link to="/SendCV" className="text-lg hover:underline">
+            Envoyer le CV
+          </Link>
+
+          {isAuthenticated ? (
+            <ScheduleSubmit text="Se déconnecter" onClick={handleLogout} />
+          ) : (
+            <ScheduleButton text="Se connecter" to="/login" />
+          )}
+        </nav>
+
+        {/* Mobile button */}
+        <button
+          className="md:hidden"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
-      </Link>
-
-      {/* Desktop Nav */}
-      <nav className="items-center hidden gap-8 text-sm md:flex">
-      <Link to="/profileAdd" className='mx-5 text-2xl'>Remplir Profil</Link>
-      <Link to="/SendCV" className='text-2xl'>Envoyer le CV</Link>
-
-        {isAuthenticated ? (
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-6 py-3"
-          >
-            <ScheduleButton text="Se déconnecter" />
-          </button>
-        ) : (
-          <button className="flex items-center gap-2 px-6 py-3">
-            <ScheduleButton text="Se connectez" to="login" />
-          </button>
-        )}
-      </nav>
 
       {/* Mobile Menu */}
-      <button className="px-4 py-2 border rounded md:hidden">
-        MENU
-      </button>
+      {open && (
+        <div className="px-4 py-6 space-y-4 border-t md:hidden">
+          <Link
+            to="/profileAdd"
+            className="block text-lg"
+            onClick={() => setOpen(false)}
+          >
+            Remplir Profil
+          </Link>
+
+          <Link
+            to="/SendCV"
+            className="block text-lg"
+            onClick={() => setOpen(false)}
+          >
+            Envoyer le CV
+          </Link>
+
+          {isAuthenticated ? (
+            <ScheduleButton
+              text="Se déconnecter"
+              onClick={handleLogout}
+              full
+            />
+          ) : (
+            <ScheduleButton
+              text="Se connecter"
+              to="/login"
+              full
+              onClick={() => setOpen(false)}
+            />
+          )}
+        </div>
+      )}
     </header>
   )
 }

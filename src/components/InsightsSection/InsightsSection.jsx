@@ -15,16 +15,16 @@ export default function InsightsSection() {
           {/* HEADER */}
           <div className="mb-12 text-center">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-8xl">DEC.</span>
+              <span className="md:text-8xl">DEC.</span>
   
-              <h1 className="font-serif tracking-wide text-8xl md:text-9xl">
+              <h1 className="font-serif text-4xl tracking-wide md:text-9xl">
                 INSIGHTS
               </h1>
   
-              <span className="text-8xl">2025</span>
+              <span className="md:text-8xl">2025</span>
             </div>
   
-            <p className="max-w-xl mx-auto text-3xl text-gray-700">
+            <p className="max-w-xl mx-auto text-gray-700 md:text-3xl">
               Let’s focus on things we can control—taxes, fees, and risk—
               and stop chasing the things we can’t.
             </p>

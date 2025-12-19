@@ -36,15 +36,19 @@ const Login = () => {
   
     try {
       const data = await login(formData.email, formData.password)
-      console.log('Login data:', data) // 👈 ajoute ça
+  
+      console.log('Login success:', data)
+      console.log('Token:', localStorage.getItem('token'))
+  
       navigate('/match')
     } catch (err) {
-      console.log(err)
+      console.error(err.response?.data || err.message)
       setError('Email ou mot de passe incorrect')
     } finally {
       setLoading(false)
     }
   }
+  
   
 
 
