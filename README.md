@@ -1,7 +1,8 @@
-###Gen Code
+Nom d'equipe : Gen Code
 
 lien du projet
-###https://vatsyyy.netlify.app/
+
+https://vatsyyy.netlify.app/
 
 node verision : V20.18.1
 npm version : 11.1.0
